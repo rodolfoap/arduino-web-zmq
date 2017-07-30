@@ -5,16 +5,18 @@ A proof of concept on how to forward REST/JSON POST request from a bash webserve
 
 The client8080.bash acts like a common browser client, will send JSON posts to a web server.
 
+```
 	$ cat client8080.bash
 		#!/bin/bash
 		set -x
 		curl -H "Content-Type: application/json" -X POST -d $'{"action":"LT","value":"1974"}\n' http://localhost:8080/api/login
 		sleep 1
 		curl -H "Content-Type: application/json" -X POST -d $'{"action":"HT","value":"2057"}\n' http://localhost:8080/api/login
-
+```
 
 * Requests are sent:
 
+```
 	$ ./client8080.bash
 		+ curl -H 'Content-Type: application/json' -X POST -d '{"action":"LT","value":"1974"}
 		' http://localhost:8080/api/login
@@ -23,10 +25,12 @@ The client8080.bash acts like a common browser client, will send JSON posts to a
 		+ curl -H 'Content-Type: application/json' -X POST -d '{"action":"HT","value":"2057"}
 		' http://localhost:8080/api/login
 		OK: HT/2057
+```
 
 ## The Bash Webserver
 
 * The Bash webServer8080 will receive HTTP REST requests over 8080 and forward them to 0mq.
+```
 	$ ./webServer8080.bash
 		 ---> POST /api/login HTTP/1.1
 		 ---> User-Agent: curl/7.38.0
@@ -44,19 +48,23 @@ The client8080.bash acts like a common browser client, will send JSON posts to a
 		 ---> Content-Length: 31
 		 --->
 		 ---> {"action":"HT","value":"2057"}
+```
 ## The C ZeroMQ queue
 
 * The C zmqServer8081 will receive 0mq messages on 8081 and forward them to /dev/ttyACM0
 
+```
 	$ ./zmqServer8081 /dev/ttyACM0
 		Received LT 1974
 		Received HT 2057
 
+```
 ## The Arduino target
 
 * The arduino board will receive the requests and process each command.
 
 ## Contents
+```
 .
 |-- AnalogReadSerial: 		The Arduino project
 |   |-- AnalogReadSerial.ino	Main file
@@ -73,5 +81,6 @@ The client8080.bash acts like a common browser client, will send JSON posts to a
 |   |-- zmqServer8081.c		The server
 |   `-- zmqServer8081.py	A python model for tests
 `-- zmqServer8081.c		Just a copy for fast reference.
+```
 
 rodolfoap at gmail, --of course-- dot com.
