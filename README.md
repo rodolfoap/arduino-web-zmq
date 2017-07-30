@@ -3,8 +3,6 @@ A proof of concept on how to forward REST/JSON POST request from a bash webserve
 
 ![Shield view](https://github.com/rodolfoap/arduino-web-zmq/blob/master/img/design.png)
 
-![Shield view](https://github.com/rodolfoap/arduino-web-zmq/blob/master/img/scshot.jpg)
-
 ## The Client
 
 The client8080.bash acts like a common browser client, will send JSON posts to a web server.
@@ -86,6 +84,7 @@ The client8080.bash acts like a common browser client, will send JSON posts to a
 |   `-- zmqServer8081.py	A python model for tests
 `-- zmqServer8081.c		Just a copy for fast reference.
 ```
+![Shield view](https://github.com/rodolfoap/arduino-web-zmq/blob/master/img/scshot.jpg)
 ![Screen view](https://github.com/rodolfoap/arduino-web-zmq/blob/master/img/scshot2.png)
 
 RodolfoAP (http://ydor.org)
