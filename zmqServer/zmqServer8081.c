@@ -30,15 +30,6 @@ int main(int argc, char* argv[]) {
 
 	sleep(2);
 	char line[MAX_LINE];
-//	while (1) {
-//		int rc = serialport_write(arduino, "7429\n");
-//		if (rc == -1) {
-//			printf("Could not write to serial port.\n");
-//		} else {
-//			serialport_read_until(arduino, line, '\n', MAX_LINE, timeout);
-//			printf("%s", line);
-//		}
-//	}
 	while (1) {
 		char buffer [128];
 		zmq_recv (responder, buffer, 128, 0);
@@ -47,7 +38,6 @@ int main(int argc, char* argv[]) {
 		int rc = serialport_write(arduino, buffer);
 		if (rc == -1) { printf("Could not write to serial port.\n"); }
 		serialport_write(arduino, "\n");
-		//sleep (1);
 		//zmq_send (responder, "word!", 5, 0);
 	}
 	serialport_close(arduino);
