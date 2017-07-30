@@ -84,5 +84,6 @@ The client8080.bash acts like a common browser client, will send JSON posts to a
 |   `-- zmqServer8081.py	A python model for tests
 `-- zmqServer8081.c		Just a copy for fast reference.
 ```
+![Screen view](https://github.com/rodolfoap/arduino-web-zmq/blob/master/img/scshot2.jpg)
 
 RodolfoAP (http://ydor.org)
