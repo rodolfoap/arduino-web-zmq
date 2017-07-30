@@ -1,6 +1,8 @@
 # arduino-web-zmq
 A proof of concept on how to forward REST/JSON POST request from a bash webserver to a ZeroMQ queue from a C server to the SERial port, in order to be parsed and processed on an Arduino board.
 
+![Shield view](https://github.com/rodolfoap/arduino-web-zmq/blob/master/img/scshot.jpg)
+
 ## The Client
 
 The client8080.bash acts like a common browser client, will send JSON posts to a web server.
@@ -83,4 +85,4 @@ The client8080.bash acts like a common browser client, will send JSON posts to a
 `-- zmqServer8081.c		Just a copy for fast reference.
 ```
 
-rodolfoap at gmail, --of course-- dot com.
+RodolfoAP (http://ydor.org)
