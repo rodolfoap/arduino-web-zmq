@@ -1,0 +1,20 @@
+Arduino will reset if serial is opened. Heres how to disble autoreset from bash:
+
+	$ stty -F /dev/ttyACM1 -hupcl
+
+See http://playground.arduino.cc/Main/DisablingAutoResetOnSerialConnection
+
+From Bash, send data like this:
+
+	$ printf '100\n' >/dev/ttyACM1
+
+On a different bash session, we can do 
+
+	$ tail -f /dev/ttyACM1
+
+But before, we require to initialize the port correctly
+
+	$ stty -F /dev/ttyACM1 cs8 115200 ignbrk -brkint -icrnl -imaxbel -opost -onlcr -isig -icanon -iexten -echo -echoe -echok -echoctl -echoke noflsh -ixon -crtscts
+
+See https://playground.arduino.cc/Interfacing/LinuxTTY
+
