@@ -19,11 +19,6 @@
 #define WSPACE "                "
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 
-// Commands are to be defined here
-#define CHG_HT 0 // COMMAND- CHANGE HIGH TIME
-#define CHG_LT 0 // COMMAND- CHANGE LOW  TIME
-
-word incomingByte = 5000;
 int led=13;
 String inString="";
 int state=1;
@@ -47,7 +42,7 @@ int getkey(unsigned int input) { if(input <  30) {return 1;} if(input < 150) {re
 
 void checkButtons() { shieldKey=getkey(analogRead(0)); }
 void checkSerial() { while (Serial.available() > 0) { int inChar = Serial.read(); if (inChar == '\n')  { parseCommand(inString); inString = ""; } else { inString += (char)inChar; } } }
-void handleLed() {
+void executeActions() {
   if(state==0) {
     if(count-- < 0) { 
       digitalWrite(led, HIGH); lcdprint(0, String(HGTIME)); state=1; count=HGTIME; 
@@ -58,10 +53,10 @@ void handleLed() {
   } 
 }
 
-// We'll emulate a threaded process, therefore calls should be non-blocking.
+// We'll emulate a threaded process by pooling, therefore calls should be non-blocking.
 void loop() {
   checkButtons();
   checkSerial();
-  handleLed();
+  executeActions();
   delay(1);
 }
