@@ -18,3 +18,8 @@ But before, we require to initialize the port correctly
 
 See https://playground.arduino.cc/Interfacing/LinuxTTY
 
+Using the provided scripts:
+
+	./initialize_serial.bash
+	./send_data.bash "LT 0250"
+	./send_data.bash "HT 1750"
